@@ -4,6 +4,7 @@ string input = Console.ReadLine();
 // Array of substrings
 string[] substrings = FindValidSubstrings(input);
 
+long totalSum = 0;
 
 // Iterate through each substring in the substrings array
 // Print the input string with the current substring highlighted
@@ -12,6 +13,21 @@ foreach (string substring in substrings)
     PrintHighlightedString(input, substring);
     Console.WriteLine();
 }
+
+
+
+// Summarise all substrings
+foreach (string substring in substrings)
+{
+    if (long.TryParse(substring, out long number))
+    {
+        totalSum += number;
+    }
+}
+
+Console.WriteLine();
+Console.WriteLine($"Total summa av alla delsträngar: {totalSum}");
+
 
 
 // Function that highlights a specified substring within a given string
