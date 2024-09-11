@@ -22,7 +22,7 @@ static bool AreInnerCharsDifferentFromFirst(string str)
 
 
 // Function that checks that a string contains only digits and returns a bool 
-static bool OnlyDigitsInString(string str)
+static bool ContainsOnlyDigits(string str)
 {
     foreach(char c in str)
     {
