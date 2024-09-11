@@ -13,3 +13,7 @@ static bool OnlyDigitsInString(string str)
     }
     return true;
 }
+
+bool testDigit = OnlyDigitsInString("123b1345");
+
+Console.WriteLine($"It is: {testDigit}");
