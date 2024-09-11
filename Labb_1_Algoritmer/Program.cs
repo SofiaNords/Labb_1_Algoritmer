@@ -1,18 +1,37 @@
-﻿//Console.WriteLine("Mata in en textsträng: ");
-string input = "29535123p48723487597645723645"; //Console.ReadLine();
+﻿Console.WriteLine("Mata in en text: ");
+string input = Console.ReadLine();
 
 // Array of substrings
 string[] substrings = FindValidSubstrings(input);
 
-foreach (string s in substrings)
+
+// Iterate through each substring in the substrings array
+// Print the input string with the current substring highlighted
+foreach (string substring in substrings)
 {
-    Console.WriteLine(s);
+    PrintHighlightedString(input, substring);
+    Console.WriteLine();
 }
+
+
+// Function that highlights a specified substring within a given string
+// by printing the string with the substring displayed in dark magenta text.
+static void PrintHighlightedString(string original, string substring)
+{
+    int startIndex = original.IndexOf(substring);
+
+    Console.Write(original.Substring(0, startIndex));
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.Write(substring);
+    Console.ResetColor();
+    Console.Write(original.Substring(startIndex + substring.Length));
+}
+
 
 // Function that extracts substrings starting and ending with the same character
 // FindValidSubstrings calls the function AreInnerCharsDifferentFromFirst
 // FindValidSubstrings calls the function ContainsOnlyDigits
-// Returns an array that is validated 
+// FindValidSubstrings returns an array that is validated 
 static string[] FindValidSubstrings(string str)
 {
     string[] result = new string[str.Length * (str.Length - 1) / 2];
@@ -35,8 +54,6 @@ static string[] FindValidSubstrings(string str)
     Array.Resize(ref result, index);
     return result;
 }
-
-
 
 
 // Function that checks the characters between the first and last character of a given string
