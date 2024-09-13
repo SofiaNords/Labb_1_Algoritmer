@@ -4,36 +4,13 @@ string input = Console.ReadLine();
 // Array of substrings
 string[] substrings = FindValidSubstrings(input);
 
-// Track substrings that have been highlighted
-HashSet<string> highlightedSubstrings = new HashSet<string>();
-
-// Iterate through each substring in the substrings array
-// Print the input string with the current substring highlighted
-foreach (string substring in substrings)
+// Iterate through each element in the substrings array and print the current
+// substring highlighted4df4df
+for (int i = 0; i < substrings.Length; i++)
 {
-    if (!highlightedSubstrings.Contains(substring))
-    {
-        PrintHighlightedString(input, substring);
-        highlightedSubstrings.Add(substring);
-        Console.WriteLine();
-    }
+    PrintHighlightedString(input, substrings[i]);
+    Console.WriteLine();
 }
-
-
-
-// Function that highlights a specified substring within a given string
-// by printing the string with the substring displayed in dark magenta text.
-static void PrintHighlightedString(string original, string substring)
-{
-    int startIndex = original.IndexOf(substring);
-
-    Console.Write(original.Substring(0, startIndex));
-    Console.ForegroundColor = ConsoleColor.Blue;
-    Console.Write(substring);
-    Console.ResetColor();
-    Console.Write(original.Substring(startIndex + substring.Length));
-}
-
 
 
 long totalSum = 0;
@@ -80,6 +57,7 @@ static string[] FindValidSubstrings(string str)
 }
 
 
+
 // Function that checks the characters between the first and last character of a given string
 // If any character matches the first character, the function returns false
 // If no characters match the first character, the method returns true
@@ -98,12 +76,13 @@ static bool AreInnerCharsDifferentFromFirst(string str)
 }
 
 
+
 // Function that checks that a string contains only digits
 // If any character is not a digit the function returns false
 // If all character is digits the function returns true
 static bool ContainsOnlyDigits(string str)
 {
-    foreach(char c in str)
+    foreach (char c in str)
     {
         if (!Char.IsDigit(c))
         {
@@ -111,4 +90,19 @@ static bool ContainsOnlyDigits(string str)
         }
     }
     return true;
+}
+
+
+
+// Function that highlights a specified substring within a given string
+// by printing the string with the substring displayed in blue text.
+static void PrintHighlightedString(string original, string substring)
+{
+    int startIndex = original.IndexOf(substring);
+
+    Console.Write(original.Substring(0, startIndex));
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.Write(substring);
+    Console.ResetColor();
+    Console.Write(original.Substring(startIndex + substring.Length));
 }
