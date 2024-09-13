@@ -4,29 +4,20 @@ string input = Console.ReadLine();
 // Array of substrings
 string[] substrings = FindValidSubstrings(input);
 
-long totalSum = 0;
+// Track substrings that have been highlighted
+HashSet<string> highlightedSubstrings = new HashSet<string>();
 
 // Iterate through each substring in the substrings array
 // Print the input string with the current substring highlighted
 foreach (string substring in substrings)
 {
-    PrintHighlightedString(input, substring);
-    Console.WriteLine();
-}
-
-
-
-// Summarise all substrings
-foreach (string substring in substrings)
-{
-    if (long.TryParse(substring, out long number))
+    if (!highlightedSubstrings.Contains(substring))
     {
-        totalSum += number;
+        PrintHighlightedString(input, substring);
+        highlightedSubstrings.Add(substring);
+        Console.WriteLine();
     }
 }
-
-Console.WriteLine();
-Console.WriteLine($"Total summa av alla delsträngar: {totalSum}");
 
 
 
@@ -42,6 +33,23 @@ static void PrintHighlightedString(string original, string substring)
     Console.ResetColor();
     Console.Write(original.Substring(startIndex + substring.Length));
 }
+
+
+
+long totalSum = 0;
+
+// Summarise all substrings
+foreach (string substring in substrings)
+{
+    if (long.TryParse(substring, out long number))
+    {
+        totalSum += number;
+    }
+}
+
+Console.WriteLine();
+Console.WriteLine($"Total summa av alla delsträngar: {totalSum}");
+
 
 
 // Function that extracts substrings starting and ending with the same character
