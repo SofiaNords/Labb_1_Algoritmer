@@ -2,7 +2,7 @@
 
 This is my first assignment in the course Programming with C# in the .NET Developer program at IT-högskolan in Gothenburg. The task was to create a console application that asks the user to input a text (string) in the console. The entered string should then be searched for all substrings that are numbers starting and ending with the same digit, without the start/end digit or any other character than digits appearing in between.
 
-![./images/correct_output.png)
+![Output](docs/correct_output.png)
 
 ## The Task
 
